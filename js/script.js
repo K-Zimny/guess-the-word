@@ -22,6 +22,14 @@ const word = "magnolia";
 // ------------------------------------------------------------------------------
 // Function to Add Placeholders for Each Letter
 
-wordInProgress = function (word) {
-  word.length;
+const updateWordsInProgress = function (word) {
+  const wordArray = word.split("");
+  console.log(wordArray);
+  for (let index = 0; index < wordArray.length; index++) {
+    wordArray[index] = "●";
+  }
+  console.log(wordArray);
+  wordInProgress.innerText = wordArray.join("");
 };
+
+updateWordsInProgress(word);
