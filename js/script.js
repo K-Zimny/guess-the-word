@@ -33,3 +33,13 @@ const updateWordsInProgress = function (word) {
 };
 
 updateWordsInProgress(word);
+
+// ------------------------------------------------------------------------------
+// Button Event listener & Key value capture
+
+guessButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  const key = guessInput.value;
+  guessInput.value = "";
+  console.log(key);
+});
