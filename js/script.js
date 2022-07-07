@@ -18,17 +18,19 @@ const guessMessage = document.querySelector(".message");
 const playAgainButton = document.querySelector(".play-again");
 //testing word
 const word = "magnolia";
+//guessed letters array that the player has guessed
+const guessedLettersArray = [];
 
 // ------------------------------------------------------------------------------
 // Function to Add Placeholders for Each Letter
 
 const updateWordsInProgress = function (word) {
   const wordArray = word.split("");
-  console.log(wordArray);
+  // console.log(wordArray);
   for (let index = 0; index < wordArray.length; index++) {
     wordArray[index] = "●";
   }
-  console.log(wordArray);
+  // console.log(wordArray);
   wordInProgress.innerText = wordArray.join("");
 };
 
@@ -42,4 +44,27 @@ guessButton.addEventListener("click", function (e) {
   const key = guessInput.value;
   guessInput.value = "";
   console.log(key);
+
+  validatePlayerInput(key);
+  console.log(key);
 });
+
+// ------------------------------------------------------------------------------
+// Check Players input
+
+const validatePlayerInput = function (input) {
+  const acceptedLetters = /[a-zA-Z]/;
+
+  if (input === "") {
+    console.log("Input is empty");
+    guessMessage.innerText = "Input is empty";
+  } else if (input.length > 1) {
+    console.log("Please only input one character");
+    guessMessage.innerText = "Please only input one character";
+  } else if (!input.match(acceptedLetters)) {
+    console.log("Please enter acceptable letters");
+    guessMessage.innerText = "Please enter acceptable letters";
+  }
+
+  return input;
+};
