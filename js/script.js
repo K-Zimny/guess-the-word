@@ -43,10 +43,12 @@ guessButton.addEventListener("click", function (e) {
   e.preventDefault();
   const key = guessInput.value;
   guessInput.value = "";
-  console.log(key);
+  // console.log(key);
 
-  validatePlayerInput(key);
-  console.log(key);
+  if (validatePlayerInput(key)) {
+    console.log(key);
+    makeGuess(key);
+  }
 });
 
 // ------------------------------------------------------------------------------
@@ -64,7 +66,21 @@ const validatePlayerInput = function (input) {
   } else if (!input.match(acceptedLetters)) {
     console.log("Please enter acceptable letters");
     guessMessage.innerText = "Please enter acceptable letters";
+  } else {
+    return input;
   }
+};
 
-  return input;
+// ------------------------------------------------------------------------------
+// Function to capture input
+
+const makeGuess = function (letter) {
+  const uppercaseLetter = letter.toUpperCase();
+  if (guessedLettersArray.includes(uppercaseLetter)) {
+    console.log("Already includes this letter");
+    guessMessage.innerText = "Already includes this letter";
+  } else {
+    guessedLettersArray.push(uppercaseLetter);
+    console.log(guessedLettersArray);
+  }
 };
