@@ -82,5 +82,18 @@ const makeGuess = function (letter) {
   } else {
     guessedLettersArray.push(uppercaseLetter);
     console.log(guessedLettersArray);
+    playersGuesses();
+  }
+};
+
+// ------------------------------------------------------------------------------
+// Player's guesses
+
+const playersGuesses = function () {
+  guessedLetters.innerHTML = "";
+  for (const list of guessedLettersArray) {
+    const li = document.createElement("li");
+    li.innerHTML = list;
+    guessedLetters.append(li);
   }
 };
